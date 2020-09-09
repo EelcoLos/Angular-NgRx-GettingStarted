@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "label": "Start App",
+      "isBackground": true,
+      "presentation": {
+        "focus": true,
+        "reveal": "always",
+        "panel": "new",
+        "group": "A"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": {
+        "owner": "typescript",
+        "source": "ts",
+        "applyTo": "closedDocuments",
+        "fileLocation": ["relative", "${cwd}"],
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "Compiled |Failed to compile."
+          }
+        }
+      }
+    },
+    {
+      "label": "kill ng serve",
+      "type": "process",
+      "command": [
+        "${command:workbench.action.tasks.terminate}",
+        "${command:workbench.action.acceptSelectedQuickOpenItem}"
+      ]
+    }
+  ]
+}
